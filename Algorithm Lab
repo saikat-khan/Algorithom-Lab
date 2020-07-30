@@ -1,0 +1,293 @@
+[1]LAB
+#include <bits/stdc++.h> 
+using namespace std; 
+int binarySearch(int array[], int start, int end, int x) 
+{ 
+	if (end >= start) { 
+		int mid = (start + end)/2;
+		if (array[mid] == x) 
+			return mid; 
+		else if (array[mid] > x) 
+			return binarySearch(array, start, mid - 1, x); 
+		else
+			return binarySearch(array, mid + 1, end, x); 
+	} 
+	return 0; 
+} 
+int main(void) 
+{ 
+	int array[] = { 2, 3, 4, 5, 10, 15, 40 }; 
+	int x = 15; 
+	int n = sizeof(array)/sizeof(array[0]); 
+	int index = binarySearch(array, 0, n - 1, x); 
+	if(index == 0) 
+		cout << "Element is not in the array";
+	else 
+		cout << "Element found at position " << index+1<<endl; 
+
+	 return 0; 
+}
+
+[2]LAB
+
+
+
+#include <bits/stdc++.h> 
+using namespace std; 
+
+void bubbleSort(int array[], int n) 
+{ 
+	int i, j, temp; 
+	for (i = 0; i < n-1; i++)	 
+        {
+            for (j = 0; j < n-i-1; j++) {
+                if (array[j] > array[j+1]) 
+                    {  
+                        temp= array[j];
+                        array[j]= array[j+1];
+                        array[j+1]= temp;
+                    }
+            }
+        }
+}
+
+int main() 
+{ 
+	int i, array[] = {12, 11, 13, 5, 6}; 
+	int n = sizeof(array)/sizeof(array[0]); 
+	bubbleSort(array, n); 
+	cout<<"Sorted array: "; 	 
+	for (i = 0; i < n; i++) 
+		cout << array[i] <<" ";
+	return 0; 
+}
+
+
+[3]LAB
+
+#include <bits/stdc++.h> 
+using namespace std; 
+int gcd(int a, int b) 
+{ 
+    if (a == 0) 
+       return b; 
+    if (b == 0) 
+       return a; 
+    if (a == b) 
+        return a; 
+   
+    if (a > b) 
+        return gcd(a-b, b); 
+
+    return gcd(a, b-a); 
+} 
+
+int main() 
+{ 
+    int a, b; 
+    cout<< "Enter two integer number = ";
+    cin >> a >> b;
+    cout<<"GCD is "<<gcd(a, b)<< endl; 
+    return 0; 
+}
+
+[4]LAB
+
+#include <bits/stdc++.h> 
+using namespace std; 
+
+void insertionsort(int array[], int n) 
+{ 
+	int i, j, k; 
+	for (i= 1;i < n;i++) 
+	{ 
+		k = array[i]; 
+		j =i - 1; 
+		while (array[j] > k) 
+		{ 
+			array[j + 1] = array[j]; 
+			j= j - 1; 
+		} 
+		array[j + 1]= k; 
+	} 
+} 
+
+int main() 
+{   
+    int i;
+	int array[] ={ 12, 11, 13, 5, 6 }; 
+	int n = sizeof(array)/sizeof(array[0]); 
+
+	insertionsort(array, n); 
+
+	for (i= 0;i < n;i++) 
+		cout <<array[i] <<" ";  
+
+	return 0; 
+}
+
+[5]LAB
+
+#include<stdio.h>
+int Fib(int n)
+{
+    if(n<=1)
+    {
+        return n;
+    }
+    else
+    {
+        return Fib(n-1)+Fib(n-2);
+    }
+}
+int main()
+{
+    int n=0;
+    int i;
+    scanf ("%d",&i);
+    for(n=0;n<=i;n++)
+    {
+        printf("%d ",Fib(n));
+    }
+    return 0;
+}
+
+[6]LAB
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int LinearSearch(int items[], int n, int k) {
+    int id;
+    for (id = 0; id < n; id++) {
+        if (items[id] == k) {
+            return id;
+        }
+    }
+    return -1;
+}
+
+int main() {
+    int n, value, ListOfItems[100], ans;
+    cout << "Enter the number of items:" << endl;
+    cin >> n;
+
+    cout << "Enter the Items:" << endl;
+    for (int i = 0; i < n; i++) cin >> ListOfItems[i];
+
+    cout << "Enter the finding value:" << endl;
+    cin >> value;
+
+    ans = LinearSearch(ListOfItems, n, value);
+
+    if (ans == -1)
+        cout << value << " not found!" << endl;
+    else
+        cout << value << " found at index: " << ans << endl;
+
+    return 0;
+}
+
+[7]LAB
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n, a[100000], k, lo = 0, hi, mid, index;
+    cout << "Enter Array Size:";
+    cin >> n;
+    cout << "Enter Elements of Array: ";
+    for (int i = 0; i < n; i++) cin >> a[i];
+    cout << "Enter Search Key: ";
+    cin >> k;
+    hi = n - 1;
+    bool found = false;
+    while (lo <= hi) {
+        mid = (lo + hi) / 2;
+        if (a[mid] == k) {
+            found = true;
+            index = mid;
+            break;
+        } else if (a[mid] > k)
+            hi = mid - 1;
+        else
+            lo = mid + 1;
+    }
+    if (!found)
+        cout << "Not Found" << endl;
+    else
+        cout << k << " found at index: " << index << endl;
+
+    return 0;
+}
+
+[8]LAB
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n, a[100000], t;
+    cout << "Enter Array Size:";
+    cin >> n;
+    cout << "Enter Elements of Array: ";
+    for (int i = 0; i < n; i++) cin >> a[i];
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n - 1; j++) {
+            if (a[j] > a[j + 1]) swap(a[j], a[j + 1]);
+        }
+    }
+    cout << "Bubble sorted list in ascending: ";
+    for (int i = 0; i < n; i++) cout << a[i] << " ";
+    cout << endl;
+
+    return 0;
+}
+
+[9]LAB
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n, a[100000], j, x;
+    cout << "Enter Array Size:";
+    cin >> n;
+    cout << "Enter Elements of Array: ";
+    for (int i = 0; i < n; i++) cin >> a[i];
+    for (int i = 0; i < n; i++) {
+        x = a[i];
+        j = i - 1;
+        while (j >= 0 && a[j] > x) {
+            a[j + 1] = a[j];
+            j--;
+        }
+        a[j + 1] = x;
+    }
+    cout << "Insertion sorted list in ascending: ";
+    for (int i = 0; i < n; i++) cout << a[i] << " ";
+    cout << endl;
+
+    return 0;
+}
+
+
+[10]LAB
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int fibonacci(int n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    int n;
+    cin >> n;
+    cout << "F" << n << " = " << fibonacci(n) << endl;
+
+    return 0;
+}
